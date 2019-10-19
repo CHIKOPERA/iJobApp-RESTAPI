@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JobRequestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="JobRequest">
+          <Key>
+            <PropertyRef Name="Job_Request_ID" />
+          </Key>
+          <Property Name="Job_Request_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Time_Start" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Time_End" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Category" Type="text" Nullable="false" />
+          <Property Name="Num_Of_Labourers" Type="int" />
+          <Property Name="Job_Specification" Type="text" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Transport_Status" Type="bit" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Assigned_Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="JobRequestModelStoreContainer">
+          <EntitySet Name="JobRequest" EntityType="Self.JobRequest" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JobRequestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="JobRequest">
+          <Key>
+            <PropertyRef Name="Job_Request_ID" />
+          </Key>
+          <Property Name="Job_Request_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Time_Start" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Time_End" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Num_Of_Labourers" Type="Int32" />
+          <Property Name="Job_Specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Transport_Status" Type="Boolean" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Assigned_Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="iJobDatabaseConStrng" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="JobRequests" EntityType="Self.JobRequest" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JobRequestModelStoreContainer" CdmEntityContainer="iJobDatabaseConStrng">
+          <EntitySetMapping Name="JobRequests">
+            <EntityTypeMapping TypeName="JobRequestModel.JobRequest">
+              <MappingFragment StoreEntitySet="JobRequest">
+                <ScalarProperty Name="Job_Request_ID" ColumnName="Job_Request_ID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time_Start" ColumnName="Time_Start" />
+                <ScalarProperty Name="Time_End" ColumnName="Time_End" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Num_Of_Labourers" ColumnName="Num_Of_Labourers" />
+                <ScalarProperty Name="Job_Specification" ColumnName="Job_Specification" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Transport_Status" ColumnName="Transport_Status" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Assigned_Status" ColumnName="Assigned_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

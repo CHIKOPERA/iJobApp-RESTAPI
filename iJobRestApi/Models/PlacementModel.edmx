@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PlacementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Placement">
+          <Key>
+            <PropertyRef Name="Placement_ID" />
+          </Key>
+          <Property Name="Placement_ID" Type="int" Nullable="false" />
+          <Property Name="Job_Request_ID" Type="int" Nullable="false" />
+          <Property Name="Agent_ID" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Driver_ID" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Completion_Status" Type="bit" Nullable="false" />
+          <Property Name="Labourer_ID" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityContainer Name="PlacementModelStoreContainer">
+          <EntitySet Name="Placement" EntityType="Self.Placement" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PlacementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Placement">
+          <Key>
+            <PropertyRef Name="Placement_ID" />
+          </Key>
+          <Property Name="Placement_ID" Type="Int32" Nullable="false" />
+          <Property Name="Job_Request_ID" Type="Int32" Nullable="false" />
+          <Property Name="Agent_ID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Driver_ID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Completion_Status" Type="Boolean" Nullable="false" />
+          <Property Name="Labourer_ID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="PlacementCon" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Placements" EntityType="Self.Placement" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PlacementModelStoreContainer" CdmEntityContainer="PlacementCon">
+          <EntitySetMapping Name="Placements">
+            <EntityTypeMapping TypeName="PlacementModel.Placement">
+              <MappingFragment StoreEntitySet="Placement">
+                <ScalarProperty Name="Placement_ID" ColumnName="Placement_ID" />
+                <ScalarProperty Name="Job_Request_ID" ColumnName="Job_Request_ID" />
+                <ScalarProperty Name="Agent_ID" ColumnName="Agent_ID" />
+                <ScalarProperty Name="Driver_ID" ColumnName="Driver_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Completion_Status" ColumnName="Completion_Status" />
+                <ScalarProperty Name="Labourer_ID" ColumnName="Labourer_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

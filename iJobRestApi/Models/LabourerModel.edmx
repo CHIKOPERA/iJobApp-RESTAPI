@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="iJobLabouerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Labourer">
+          <Key>
+            <PropertyRef Name="Labourer_ID" />
+          </Key>
+          <Property Name="Labourer_ID" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Name" Type="text" Nullable="false" />
+          <Property Name="Surname" Type="text" Nullable="false" />
+          <Property Name="Email_Address" Type="varchar" MaxLength="30" />
+          <Property Name="Date_Of_Birth" Type="date" Nullable="false" />
+          <Property Name="Birth_Province" Type="text" Nullable="false" />
+          <Property Name="Language" Type="text" Nullable="false" />
+          <Property Name="Gender" Type="text" Nullable="false" />
+          <Property Name="Contact_Number" Type="varchar" MaxLength="10" />
+          <Property Name="Street_Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Province" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Postal_Code" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Skills" Type="text" Nullable="false" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="Additional_Information" Type="text" />
+        </EntityType>
+        <EntityType Name="LabourerRating">
+          <Key>
+            <PropertyRef Name="Rating_ID" />
+          </Key>
+          <Property Name="Rating_ID" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Client_ID" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Labourer_ID" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Comment" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="iJobLabouerModelStoreContainer">
+          <EntitySet Name="Labourer" EntityType="Self.Labourer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LabourerRating" EntityType="Self.LabourerRating" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="iJobLabouerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Labourer">
+          <Key>
+            <PropertyRef Name="Labourer_ID" />
+          </Key>
+          <Property Name="Labourer_ID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email_Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Of_Birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Birth_Province" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Language" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Street_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Province" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Postal_Code" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="Additional_Information" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LabourerRating">
+          <Key>
+            <PropertyRef Name="Rating_ID" />
+          </Key>
+          <Property Name="Rating_ID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Client_ID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Labourer_ID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="iJobLabConstring" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Labourers" EntityType="Self.Labourer" />
+          <EntitySet Name="LabourerRatings" EntityType="Self.LabourerRating" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="iJobLabouerModelStoreContainer" CdmEntityContainer="iJobLabConstring">
+          <EntitySetMapping Name="Labourers">
+            <EntityTypeMapping TypeName="iJobLabouerModel.Labourer">
+              <MappingFragment StoreEntitySet="Labourer">
+                <ScalarProperty Name="Labourer_ID" ColumnName="Labourer_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email_Address" />
+                <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+                <ScalarProperty Name="Birth_Province" ColumnName="Birth_Province" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact_Number" />
+                <ScalarProperty Name="Street_Address" ColumnName="Street_Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Postal_Code" ColumnName="Postal_Code" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Additional_Information" ColumnName="Additional_Information" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LabourerRatings">
+            <EntityTypeMapping TypeName="iJobLabouerModel.LabourerRating">
+              <MappingFragment StoreEntitySet="LabourerRating">
+                <ScalarProperty Name="Rating_ID" ColumnName="Rating_ID" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Labourer_ID" ColumnName="Labourer_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
